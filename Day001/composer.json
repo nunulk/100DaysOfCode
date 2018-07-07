@@ -1,0 +1,11 @@
+{
+    "name": "nunulk/dci_example",
+    "type": "project",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
