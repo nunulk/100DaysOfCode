@@ -1,3 +1,4 @@
+"use strict";
 // https://tutorialzine.com/2016/07/learn-typescript-in-30-minutes
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -9,6 +10,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+exports.__esModule = true;
 // 1. Primitives
 var burger = 'hamburger', calories = 300, tasty = true;
 function speak(food, energy) {
@@ -45,9 +47,6 @@ var HappyMeal = /** @class */ (function (_super) {
     function HappyMeal() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    // constructor(items: string[], pages: number) {
-    // 	super(items, pages)
-    // }
     HappyMeal.prototype.show = function () {
         console.log('Our special menu for children:');
         console.log(this.items.join(',') + " in " + this.pages + " page(s).");
@@ -56,3 +55,19 @@ var HappyMeal = /** @class */ (function (_super) {
 }(Menu));
 var specialChildrenMenu = new HappyMeal(['candy', 'drink', 'toy'], 2);
 specialChildrenMenu.show();
+// 4. Generics
+console.log('===== 4. Generics =====');
+function genericFunc(argument) {
+    var arrayOfT = [];
+    arrayOfT.push(argument);
+    return arrayOfT;
+}
+var arrayFromString = genericFunc('beep');
+console.log(arrayFromString);
+console.log(typeof arrayFromString[0]);
+var arrayFromNumber = genericFunc(42);
+console.log(arrayFromNumber);
+console.log(typeof arrayFromNumber[0]);
+// 5. Modules
+var module_1 = require("./module");
+module_1.sayHi();

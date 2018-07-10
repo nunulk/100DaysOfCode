@@ -66,3 +66,29 @@ const specialChildrenMenu = new HappyMeal(['candy', 'drink', 'toy'], 2)
 
 specialChildrenMenu.show()
 
+
+// 4. Generics
+
+console.log('===== 4. Generics =====')
+
+function genericFunc<T>(argument: T): T[] {
+	const arrayOfT: T[] = []
+	arrayOfT.push(argument)
+	return arrayOfT
+}
+
+const arrayFromString = genericFunc<string>('beep')
+
+console.log(arrayFromString)
+console.log(typeof arrayFromString[0])
+
+const arrayFromNumber = genericFunc(42)
+
+console.log(arrayFromNumber)
+console.log(typeof arrayFromNumber[0])
+
+// 5. Modules
+
+import { sayHi } from './module'
+
+sayHi()
