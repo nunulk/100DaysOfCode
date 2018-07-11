@@ -5,4 +5,28 @@ proc initial(): array[7, Position] =
 
 var game: LifeGame = newGame(4, 4, initial())
 
-doAssert game.board == @[@[0,1,0,1],@[0,0,1,0],@[1,1,0,0],@[0,0,1,1]], "初期生成エラー"
+doAssert game.board == @[
+  @[0,1,0,1],
+  @[0,0,1,0],
+  @[1,1,0,0],
+  @[0,0,1,1]
+], "初期生成エラー"
+
+game.nextGeneration()
+
+doAssert game.board == @[
+  @[0,0,1,0],
+  @[1,0,1,0],
+  @[0,1,0,1],
+  @[0,1,1,0]
+], "世代1エラー"
+
+game.nextGeneration()
+
+doAssert game.board == @[
+  @[0,1,0,0],
+  @[0,0,1,1],
+  @[1,0,0,1],
+  @[0,1,1,0]
+], "世代2エラー"
+
