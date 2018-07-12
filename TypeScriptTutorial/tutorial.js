@@ -71,3 +71,33 @@ console.log(typeof arrayFromNumber[0]);
 // 5. Modules
 var module_1 = require("./module");
 module_1.sayHi();
+// 6. Intersection Types
+console.log('===== 6. Intersection Types =====');
+function extend(first, second) {
+    var result = {};
+    for (var id in first) {
+        result[id] = first[id];
+    }
+    for (var id in second) {
+        if (!result.hasOwnProperty(id)) {
+            result[id] = second[id];
+        }
+    }
+    return result;
+}
+var Person = /** @class */ (function () {
+    function Person(name) {
+        this.name = name;
+    }
+    return Person;
+}());
+var ConsoleLogger = /** @class */ (function () {
+    function ConsoleLogger() {
+    }
+    ConsoleLogger.prototype.log = function () {
+        console.log('ConsoleLogger.log');
+    };
+    return ConsoleLogger;
+}());
+var jim = extend(new Person('Jim'), new ConsoleLogger());
+jim.log();

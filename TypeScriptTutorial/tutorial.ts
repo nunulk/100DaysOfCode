@@ -92,3 +92,38 @@ console.log(typeof arrayFromNumber[0])
 import { sayHi } from './module'
 
 sayHi()
+
+// 6. Intersection Types
+
+console.log('===== 6. Intersection Types =====')
+
+function extend<T, U>(first: T, second: U): T & U {
+	let result = <T & U>{}
+	for (let id in first) {
+		(<any>result)[id] = (<any>first)[id]
+	}
+	for (let id in second) {
+		if (!result.hasOwnProperty(id)) {
+			(<any>result)[id] = (<any>second)[id]
+		}
+	}
+	return result
+}
+
+class Person {
+	constructor(public name: string) {}
+}
+
+interface Loggable {
+	log(): void
+}
+
+class ConsoleLogger implements Loggable {
+	log(): void {
+		console.log('ConsoleLogger.log')
+	}
+}
+
+let jim = extend(new Person('Jim'), new ConsoleLogger())
+jim.log()
+
