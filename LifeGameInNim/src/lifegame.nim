@@ -1,4 +1,4 @@
-import sequtils
+import sequtils, os, osproc, random
 
 const Dead = 0
 const Alive = 1
@@ -62,8 +62,32 @@ proc nextGeneration*(game: var LifeGame) =
     new_board.add(row)
   game.board = new_board
 
+proc printBoard(board: Board) =
+  var output = ""
+  for y in board:
+    for x in y:
+      let c = if x == 1: "■" else: "□"
+      output = output & c
+    output = output & "\n"
+  discard execCmd("clear")
+  echo output
+
+proc initial(count: int): seq[Position] =
+  randomize()
+  var cells: seq[Position] = @[]
+  for i in 0..<int(count*count/7):
+    let x = int(rand(1.0) * 100) mod count
+    let y = int(rand(1.0) * 100) mod count
+    let pos: Position = [x, y]
+    cells.add(pos)
+  return cells
+
 proc main() =
-  discard
+  var game: LifeGame = newGame(25, 25, initial(25))
+  for i in 0..<100:
+    printBoard(game.board)
+    game.nextGeneration()
+    sleep(1000)
 
 when isMainModule:
   main()
