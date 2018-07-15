@@ -7,7 +7,7 @@ export interface RootState {
   count: number
 }
 
-export const store: StoreOptions<RootState> = {
+const store: StoreOptions<RootState> = {
   state: {
     count: 10
   },
