@@ -10,8 +10,8 @@ main = mainWith myFunction
     mainWith function = do
       args <- getArgs
       case args of
-        ["SafeList"]                  -> testSafeList
-        ["splitLines",input]          -> putStrLn $ show $ splitLines input
+        ["safeList"]                  -> testSafeList
+        ["splitLines",input]          -> print $ splitLines input
         ["interactWith",input,output] -> interactWith function input output
         _ -> putStrLn "error: exactly three arguments needed"
 
