@@ -1,0 +1,2 @@
+Hello, this is a sample text.
+This document will be converted in to upper case strings.

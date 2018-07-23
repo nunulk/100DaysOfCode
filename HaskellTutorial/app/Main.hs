@@ -3,6 +3,7 @@ module Main where
 import Lib
 import SafeList
 import Instance
+import FileHandling
 import System.Environment (getArgs)
 
 main :: IO ()
@@ -15,6 +16,7 @@ main = mainWith myFunction
         ["safeList"]                  -> testSafeList
         ["splitLines",input]          -> print $ splitLines input
         ["interactWith",input,output] -> interactWith function input output
+        ["copyFileToUpper", input, output] -> copyFileToUpper input output
         _ -> putStrLn "error: exactly three arguments needed"
 
     myFunction = id
