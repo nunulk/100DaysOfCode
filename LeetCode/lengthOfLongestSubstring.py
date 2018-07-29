@@ -1,29 +1,20 @@
-import time
-
 class Solution:
-    def findLongestSubstring(self, s):
-        """
-        :type s: str
-        :type n: int
-        :rtype: int
-        """
-        chars = []
-        for i in range(0, len(s)):
-            if s[i] in chars:
-                return len(s[0:i])
-            chars.append(s[i])
-        return len(s[0:i+1])
-
     def lengthOfLongestSubstring(self, s):
         """
         :type s: str
         :rtype: int
         """
-        max_len = 0
-        for i in range(0, len(s)):
-            if len(s[i:]) <= max_len:
-                break
-            max_len = max(max_len, self.findLongestSubstring(s[i:]))
+        max_len, i, j, chars = 0, 0, 0, []
+        slen = len(s)
+        while i < slen and j < slen:
+            ch = s[j]
+            if not ch in chars:
+                chars.append(ch)
+                j += 1
+                max_len = max(max_len, j - i)
+            else:
+                chars.remove(s[i])
+                i += 1
         return max_len
 
 s = Solution()
