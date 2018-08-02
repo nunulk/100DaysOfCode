@@ -6,6 +6,7 @@ import Instance
 import FileHandling
 import CsvHandling
 import QuickSort
+import GetPassword
 import System.Environment (getArgs)
 
 main :: IO ()
@@ -21,6 +22,7 @@ main = mainWith myFunction
         ["readPrices", input]           -> readPrices input
         ["interactWith", input, output] -> interactWith function input output
         ["copyFileToUpper", input, output] -> copyFileToUpper input output
+        ["getPassword", input, uid]           -> getPassword input (read uid)
         _ -> putStrLn "error: exactly three arguments needed"
 
     myFunction = id
