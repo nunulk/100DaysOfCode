@@ -11,9 +11,24 @@ const store: StoreOptions<RootState> = {
   state: {
     count: 10
   },
+  getters: {
+    next (state): number {
+      return state.count + 1
+    },
+  },
   mutations: {
-    increament (state) {
+    set (state, num) {
+      state.count = num
+    },
+    increment (state) {
       state.count++
+    }
+  },
+  actions: {
+    incrementAsync ({ commit }) {
+      setTimeout(() => {
+        commit('increment')
+      }, 1000)
     }
   }
 }

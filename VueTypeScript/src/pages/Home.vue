@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ msg }}</h1>
-    <hello-world></hello-world>
+    <hello-world :value="1"></hello-world>
   </div>
 </template>
 
