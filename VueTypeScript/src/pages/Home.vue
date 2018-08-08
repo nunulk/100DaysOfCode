@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>{{ msg }}</h1>
+  <div class="content">
     <hello-world :value="1"></hello-world>
   </div>
 </template>
@@ -12,12 +11,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
 export default Vue.extend({
   name: 'Home',
   components: {
-    HelloWorld
+    HelloWorld,
   },
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
 })
 </script>
