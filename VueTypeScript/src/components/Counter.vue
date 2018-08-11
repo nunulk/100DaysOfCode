@@ -24,19 +24,21 @@
 <script lang="ts">
 import Vue, { ComponentOptions } from 'vue'
 import { mapState, mapMutations, mapGetters, mapActions } from 'vuex'
+import { Counter } from '@/store'
 
-interface HelloWorld extends Vue {
+interface CounterComponent extends Vue {
   value: number
+  counter: Counter
   loading: boolean
   current: number
   next: number
-  set: (n: number) => void
+  set: (c: Counter) => void
   increment: () => void
   incrementAsync: () => void
 }
 
 export default {
-  name: 'HelloWorld',
+  name: 'counter',
   props: {
     value: {
       type: Number,
@@ -45,23 +47,25 @@ export default {
   },
   data () {
     return {
+      counter: { value: 0 },
       loading: false,
     }
   },
-  created (this: HelloWorld) {
-    this.set(this.value)
+  created (this: CounterComponent) {
+    this.counter.value = this.value
+    this.set(this.counter)
   },
   computed: {
-    ...mapState({current: 'count'}),
-    ...mapGetters(['next']),
-    half (this: HelloWorld) {
+    ...mapState({counterState: 'counter'}),
+    ...mapGetters(['current', 'next']),
+    half (this: CounterComponent): number {
       return this.current / 2
     }
   },
   methods: {
     ...mapMutations(['set', 'increment']),
     ...mapActions(['incrementAsync']),
-    handleClickAsync (this: HelloWorld) {
+    handleClickAsync (this: CounterComponent): void {
       this.loading = true
       this.incrementAsync()
       setTimeout(() => {

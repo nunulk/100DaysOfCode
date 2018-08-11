@@ -1,17 +1,17 @@
 <template>
   <div class="content">
-    <hello-world :value="1"></hello-world>
+    <counter :value="1"></counter>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import HelloWorld from '@/components/HelloWorld.vue'
+import Counter from '@/components/Counter.vue'
 
 export default Vue.extend({
   name: 'Home',
   components: {
-    HelloWorld,
+    Counter,
   },
 })
 </script>
